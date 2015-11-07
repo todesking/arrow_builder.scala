@@ -19,6 +19,7 @@ ArrowBuilder.build[MyArrow, Int, String] { in =>
   a <- arr[Int, Int](_ + 1) -< in
   b <- arr[Int, Int](_ + 2) -< in
   a_b <- arr[(Int, Int), Int] { case (a, b) => a * b } -< a.zip(b)
+  s <- arr[Int, String](_.toString) -< a_b
 } yield a_b
 ```
 
